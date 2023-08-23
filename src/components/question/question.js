@@ -96,7 +96,257 @@ export const mcq = [
            "npm serve",
            "npm run build"
     ],        correctAnswer: 'B'
-      }
+      },
+      {
+        question: "What is Next.js?",
+        options :[
+           "A programming language",
+          "A JavaScript framework",
+           "A server-side rendering framework for React",
+           "A database management system"
+        ],
+        correctAnswer: 'C',
+    },
+    {
+      question: "What is Next.js?",
+      options :[
+         "A programming language",
+        "A JavaScript framework",
+         "A server-side rendering framework for React",
+         "A database management system"
+      ],
+      correctAnswer: 'C',
+  },
+  {
+    question: "What is Next.js?",
+    options :[
+       "A programming language",
+      "A JavaScript framework",
+       "A server-side rendering framework for React",
+       "A database management system"
+    ],
+    correctAnswer: 'C',
+},
+{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},
+{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},
+{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+},
+{
+  question: "What is Next.js?",
+  options :[
+     "A programming language",
+    "A JavaScript framework",
+     "A server-side rendering framework for React",
+     "A database management system"
+  ],
+  correctAnswer: 'C',
+}
   ]  }
 ]
   

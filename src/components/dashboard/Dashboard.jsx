@@ -3,9 +3,7 @@ import React from 'react'
 function Dashboard() {
   return (
     <div>
-        <Header>
-           
-        </Header>
+            I am dashboard
     </div>
   )
 }
