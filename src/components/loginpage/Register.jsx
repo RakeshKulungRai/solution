@@ -1,28 +1,27 @@
 import React, { useState } from 'react'
 import {FcGoogle}  from 'react-icons/fc';
 import {BsFacebook} from 'react-icons/bs'
-import { redirect } from "react-router-dom";
+import { redirect,useNavigate} from "react-router-dom";
 import axios from 'axios';
 function Register() {
     const [name,setName] = useState('');
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [error,SetError] = useState();
+    const navigate = useNavigate()
     async function  Create()
     {
-      return redirect("/login");
-      console.log("hello")
+           
       try{
-        
         const result  = await axios.post('http://localhost:8000/auth/register',{"name":name,"email":email,"password":password})
         SetError()
-        alert('successifully created')
+        setTimeout(function() { alert("successifully created"); }, 2)
         setName()
         setPassword()
         setEmail()
         return (
-          <Navigate  to='login'/>
-        )
+          navigate('/login')
+        ) 
       }
       catch{
         if (email)
