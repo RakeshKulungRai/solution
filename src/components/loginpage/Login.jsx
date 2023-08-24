@@ -9,10 +9,16 @@ function Login() {
     const [password,setPassword] = useState();
     async function  Signin()
     {
+      try{
         const result  = await axios.post('http://localhost:8000/auth/login',{"email":email,"password":password})
         localStorage.setItem('user_auth_access_token',result.data.access_token)
         localStorage.setItem('user_auth_refresh_token',result.data.refresh_token)
         return navigate('/')
+      }
+      catch(error)
+      {
+          console.log('error',error)
+      }
     }
   return ( 
     <div className='grid w-[400px] py-2 h-[300px] bg-slate-300 gap-y-auto flex items-center justify-center ml-[300px] rounded-md'>
@@ -23,7 +29,7 @@ function Login() {
       <button className='text-white' onClick={Signin}>Sign In</button></div> 
       <div className='block '>
         Don't have account?
-        <button className='ml-1 text-slate-500 hover:underline decoration-zinc-400'> Create</button>
+        <button className='ml-1 text-slate-500 hover:underline decoration-zinc-400' onClick={()=>navigate('/register')}> Create</button>
       </div>
       <div className='text-center'>OR</div>
       <button className='hover:underline decoration-zinc-400'><div className='flex'><FcGoogle className='mt-1 text-center mr-2'/>Sign in with google?</div></button>

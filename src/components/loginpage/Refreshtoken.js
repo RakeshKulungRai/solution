@@ -8,9 +8,9 @@ export const Refreshtoken = async() => {
     }
     catch
     {
-        setTimeout(function() { alert("Session Expired"); }, 2000)
+        alert("Session Expired"); 
         localStorage.clear()
-        
+        window.location.replace("/login")
     }
 }
 

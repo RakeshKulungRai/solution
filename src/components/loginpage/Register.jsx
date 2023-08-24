@@ -9,23 +9,22 @@ function Register() {
     const [password,setPassword] = useState('');
     const [error,SetError] = useState();
     const navigate = useNavigate()
-    async function  Create()
+    async function  Create(e)
     {
-           
+            e.preventDefault()
+           console.log("name,email,password")
       try{
         const result  = await axios.post('http://localhost:8000/auth/register',{"name":name,"email":email,"password":password})
         SetError()
-        setTimeout(function() { alert("successifully created"); }, 2000)
+        alert("successifully created");
         setName()
         setPassword()
         setEmail()
-        return (
-          navigate('/login')
-        ) 
+        navigate('/login')
+       
       }
-      catch{
-        if (email)
-        SetError("email is already exist")
+      catch(error){
+        SetError(error.message)
       }
        
     }    

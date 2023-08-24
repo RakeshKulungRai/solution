@@ -31,6 +31,7 @@ function UserProfile() {
     {
         localStorage.clear()
         alert('Logout Successifully')
+        window.location.replace('/')
     }
   return (
     <div>

@@ -13,7 +13,7 @@ import Notfound from "./components/Notfound"
 function App() {
   const [login,setLogin] = useState(false)
   { (localStorage.getItem('user_auth_refresh_token'))?
-    setInterval(Refreshtoken,60000):""}
+    setInterval(Refreshtoken,1800000):""}
 
   return (
     <div>
@@ -22,9 +22,8 @@ function App() {
       <Routes>
       <Route element={<Mcq />} path="/mcq" />     
       <Route element={<UserProfile />} path="/profile" />  
-      <Route element={<Refreshtoken />} path="/refresh" />
       <Route element={<Leaderboard />} path="/leaderboard" />
-      <Route element={<Notfound />} path="/*"/>
+      <Route element={<Notfound />} path="*"/>
      
       <Route element={<Login />} path="/login" /> 
       <Route element={<Dashboard />} path ='/'/> 
