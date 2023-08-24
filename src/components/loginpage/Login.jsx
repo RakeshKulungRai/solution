@@ -9,12 +9,10 @@ function Login() {
     const [password,setPassword] = useState();
     async function  Signin()
     {
-      console.log('hello')
         const result  = await axios.post('http://localhost:8000/auth/login',{"email":email,"password":password})
         localStorage.setItem('user_auth_access_token',result.data.access_token)
         localStorage.setItem('user_auth_refresh_token',result.data.refresh_token)
-       
-        navigate('/')
+        return navigate('/')
     }
   return ( 
     <div className='grid w-[400px] py-2 h-[300px] bg-slate-300 gap-y-auto flex items-center justify-center ml-[300px] rounded-md'>

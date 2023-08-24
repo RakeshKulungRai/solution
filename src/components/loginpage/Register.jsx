@@ -15,7 +15,7 @@ function Register() {
       try{
         const result  = await axios.post('http://localhost:8000/auth/register',{"name":name,"email":email,"password":password})
         SetError()
-        setTimeout(function() { alert("successifully created"); }, 2)
+        setTimeout(function() { alert("successifully created"); }, 2000)
         setName()
         setPassword()
         setEmail()

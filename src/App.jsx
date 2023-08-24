@@ -5,21 +5,30 @@ import Mcq from "./components/mcq/Mcq"
 import {BrowserRouter,Route, Routes} from 'react-router-dom'
 import Dashboard from './components/dashboard/Dashboard'
 import UserProfile from "./components/loginpage/UserProfile"
-import {refresh_token} from "./components/loginpage/Refreshtoken/"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import Navbar from "./components/navbar/Navbar"
+import Leaderboard from "./components/leaderboard/Leaderboard"
+import {Refreshtoken} from "./components/loginpage/Refreshtoken"
+import Notfound from "./components/Notfound"
 function App() {
-  const [islogin,SetIslogin] = useState(false)
-  setInterval(refresh_token,60000)
+  const [login,setLogin] = useState(false)
+  { (localStorage.getItem('user_auth_refresh_token'))?
+    setInterval(Refreshtoken,60000):""}
+
   return (
     <div>
-      <div>Navbar</div>
       <BrowserRouter> 
+      <Navbar/>
       <Routes>
-      <Route element={<Dashboard />} path ='/'/>
-      <Route element={<Login />} path="/login" />      
-      <Route element={<Mcq />} path="/mcq" />  
-      <Route element={<Register />} path="/register" />    
+      <Route element={<Mcq />} path="/mcq" />     
       <Route element={<UserProfile />} path="/profile" />  
+      <Route element={<Refreshtoken />} path="/refresh" />
+      <Route element={<Leaderboard />} path="/leaderboard" />
+      <Route element={<Notfound />} path="/*"/>
+     
+      <Route element={<Login />} path="/login" /> 
+      <Route element={<Dashboard />} path ='/'/> 
+      <Route element={<Register />} path="/register" /> 
       </Routes>  
     </BrowserRouter>
     </div>
