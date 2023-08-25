@@ -29,7 +29,9 @@ function Mcq() {
             <div>
                 <button className={`mr-8 ${currentpage==1?'text-slate-500':''}`} disabled={currentpage==1?true:false} onClick={()=>{SetCurrentpage( currentpage -1)}}>prev</button>
                 <button className={` ${currentpage==totalpage?'text-slate-500':''}`} disabled={currentpage==totalpage?true:false} onClick={()=>{SetCurrentpage( currentpage + 1)}}>next</button>
+
             </div>
+           <button onClick={Submit}>submit</button>
         </div>
     );
 }

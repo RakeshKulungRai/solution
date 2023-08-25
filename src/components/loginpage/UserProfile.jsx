@@ -1,7 +1,8 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-
+import React, { useContext, useEffect, useState } from 'react'
+import { loginContext } from '../../App'
 function UserProfile() {
+    const [loggedin,setLoggedin] = useContext(loginContext);
     const url = "http://localhost:8000/auth/me"
     const [userdetail,setUserdetail] = useState()
     useEffect(()=>{
@@ -23,13 +24,14 @@ function UserProfile() {
                 setUserdetail(result?.data)
         }
         catch{
-            console.log("Error")
+            localStorage.clear()
+            setLoggedin(false)
+            window.location.replace('/login')
         }
         
     }
     function Logout()
     {
-        localStorage.clear()
         alert('Logout Successifully')
         window.location.replace('/')
     }

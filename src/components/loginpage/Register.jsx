@@ -35,8 +35,9 @@ function Register() {
      <div className='block text-center' > <input type='text' className='text-center h-[30px] rounded focus:outline-slate-200' placeholder='Email' onChange={(e)=>{setEmail(e.target.value)}}/></div> 
      <span className={` ${!error?'hidden':'block text-red-600'} `}>{error}</span>
      <div className='block text-center'><input type='password' className='text-center h-[30px] rounded focus:outline-slate-200' placeholder='Password' onChange={(e)=>{setPassword(e.target.value)}}/></div> 
-     <div className='block  text-center bg-[blue] w-[400] rounded hover:bg-sky-700'>
-      <button className='text-white' onClick={Create}>Register</button></div> 
+     
+     <button className='text-white' onClick={Create}><div className='block  text-center bg-[blue] w-[400] rounded hover:bg-sky-700'>
+      Register</div> </button>
       <button className='hover:underline decoration-zinc-400'><div className='flex'><FcGoogle className='mt-1 text-center mr-2'/>Register in with google?</div></button>
       <button className='hover:underline decoration-zinc-400'><div className='flex'><BsFacebook className='mt-1 text-center mr-2'/> Register in with facebook?</div></button> 
     </div>

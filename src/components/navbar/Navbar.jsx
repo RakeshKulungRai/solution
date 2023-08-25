@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { loginContext } from '../../App'
 
 function Navbar() {
+  const [loggedin,setLoggedin] = useContext(loginContext)
   return (
-    <div className='container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center'>
+    <div className='container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center '>
         <Link to="" className='mr-5'> Dashboard
         </Link>
-        { (localStorage.getItem('user_auth_refresh_token'))?<div>
+        { loggedin?<div>
         <Link to ="mcq" className='mr-5'>Test</Link>
         <Link to ="leaderboard" className='mr-5'>Leaderboard</Link>
        
