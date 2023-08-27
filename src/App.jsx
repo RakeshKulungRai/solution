@@ -1,8 +1,7 @@
 import Login from "./components/loginpage/Login"
 import Register from "./components/loginpage/Register"
 
-import Mcq from "./components/mcq/Mcq"
-import {BrowserRouter,Navigate,Route, Routes} from 'react-router-dom'
+import {BrowserRouter,Route, Routes} from 'react-router-dom'
 import Dashboard from './components/dashboard/Dashboard'
 import UserProfile from "./components/loginpage/UserProfile"
 import { createContext, useContext, useEffect, useState } from "react"
@@ -10,6 +9,7 @@ import Navbar from "./components/navbar/Navbar"
 import Leaderboard from "./components/leaderboard/Leaderboard"
 import {Refreshtoken} from "./components/loginpage/Refreshtoken"
 import Notfound from "./components/Notfound"
+import Test from "./components/test/Test"
 export const loginContext = createContext()
 function App() {
   const [loggedin,setLoggedin] = useState();
@@ -31,7 +31,7 @@ function App() {
       <BrowserRouter> 
       <Navbar/>
       <Routes>
-      <Route element={loggedin?<Mcq />:<Notfound />} path="/mcq" />     
+      <Route element={loggedin?<Test />:<Notfound />} path="/mcq" />     
       <Route element={loggedin?<UserProfile />:<Notfound />} path="/profile" />  
       <Route element={loggedin?<Leaderboard />:<Notfound />} path="/leaderboard" />
       <Route element={<Notfound />} path="*"/>

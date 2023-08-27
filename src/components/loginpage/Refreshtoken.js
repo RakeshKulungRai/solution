@@ -7,11 +7,10 @@ export const Refreshtoken = async() => {
     try
     {
 
-       if(loggedin){ 
+       
         const token = localStorage.getItem('user_auth_refresh_token')
        const result  = await axios.post('http://localhost:8000/auth/refresh_token',{"token":`${token}`})
        localStorage.setItem('user_auth_access_token',result.data.access_token)
-    }
        
     }
     catch

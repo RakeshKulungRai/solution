@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CgShapeCircle } from 'react-icons/cg';
 import { mcq } from '../question/question';
-
+import Time from './Time';
 function Mcq() {
     const [currentpage,SetCurrentpage] = useState(1)
     const page = 4
@@ -10,17 +10,19 @@ function Mcq() {
     const question = mcq[0].questions
     const currentindex=   (currentpage-1)*page
     const data= question.slice(currentindex,Math.min(currentindex+page,noofpage))
-    const time =  Date();
+    function Submit()
+    {
+        
+    }
     return (
         <div>
-            <h1>{time}</h1>
             <div className='p-14'>
-                
+                <Time />
                 {data.map((d, index) => (
                     <ul key={index}>
-                        <li>{index+1+ currentindex}. {d?.question} hi</li>
+                        <li>{currentindex+index+1}. {d?.question} hi</li>
                         {d.options.map((option,i)=>(
-                        <li key ={i} className='flex green pl-2'><CgShapeCircle className='mt-1' />{option}</li>
+                        <li key ={i} className='flex green pl-2'><input type='radio' className='m-1' name={index+1+currentindex +"n"}/>{option}</li>
                         ))}
                        <br/>
                     </ul>

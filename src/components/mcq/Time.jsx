@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function Time() {
-  const [remainingTime, setRemainingTime] = useState(30); // 1 hour in seconds
+  const [remainingTime, setRemainingTime] = useState(1800); // 1 hour in seconds
 
   useEffect(() => {
     // Update the remaining time every second

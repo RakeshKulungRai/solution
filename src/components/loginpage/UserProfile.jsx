@@ -24,16 +24,15 @@ function UserProfile() {
                 setUserdetail(result?.data)
         }
         catch{
-            localStorage.clear()
             setLoggedin(false)
-            window.location.replace('/login')
+            localStorage.clear()
         }
         
     }
     function Logout()
     {
         alert('Logout Successifully')
-        window.location.replace('/')
+        window.location.replace('/login')
     }
   return (
     <div>
@@ -41,7 +40,6 @@ function UserProfile() {
         <div>Name : {userdetail?.name}</div>
         <div>Email : {userdetail?.email}</div>
         <div>Join on : {userdetail?.created_at}</div>
-
      <button className='red-200' onClick={Logout} >Logout</button>
     </div>
   )
