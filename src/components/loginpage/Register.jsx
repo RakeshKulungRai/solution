@@ -38,6 +38,7 @@ function Register() {
      
      <button className='text-white' onClick={Create}><div className='block  text-center bg-[blue] w-[400] rounded hover:bg-sky-700'>
       Register</div> </button>
+      <div><button onClick={()=>navigate('/login')}>login</button></div>
       <button className='hover:underline decoration-zinc-400'><div className='flex'><FcGoogle className='mt-1 text-center mr-2'/>Register in with google?</div></button>
       <button className='hover:underline decoration-zinc-400'><div className='flex'><BsFacebook className='mt-1 text-center mr-2'/> Register in with facebook?</div></button> 
     </div>

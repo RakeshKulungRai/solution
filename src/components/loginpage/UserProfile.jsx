@@ -23,9 +23,8 @@ function UserProfile() {
                 )
                 setUserdetail(result?.data)
         }
-        catch{
-            setLoggedin(false)
-            localStorage.clear()
+        catch(error){
+            console.log(error.message)
         }
         
     }
@@ -33,6 +32,9 @@ function UserProfile() {
     {
         alert('Logout Successifully')
         window.location.replace('/login')
+        localStorage.clear()
+        setLoggedin(false)
+
     }
   return (
     <div>

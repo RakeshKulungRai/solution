@@ -7,23 +7,25 @@ import UserProfile from "./components/loginpage/UserProfile"
 import { createContext, useContext, useEffect, useState } from "react"
 import Navbar from "./components/navbar/Navbar"
 import Leaderboard from "./components/leaderboard/Leaderboard"
-import {Refreshtoken} from "./components/loginpage/Refreshtoken"
+import Refreshtoken from "./components/loginpage/Refreshtoken"
 import Notfound from "./components/Notfound"
 import Test from "./components/test/Test"
 export const loginContext = createContext()
+import Question from "./components/admin/Question"
 function App() {
-  const [loggedin,setLoggedin] = useState();
+ 
+        const [loggedin,setLoggedin] = useState();
   useEffect(()=>{
-    if(localStorage.getItem('user_auth_access_token'))
+  if(localStorage.getItem('user_auth_access_token'))
   {
     setLoggedin(true)
-  }
-  })
   
-  if (loggedin)
-  {
-    setInterval(Refreshtoken,1800000)
+    setInterval(Refreshtoken,180000)
+    
   }
+  },[])
+  
+ 
 
   return (
     <div>
@@ -31,6 +33,7 @@ function App() {
       <BrowserRouter> 
       <Navbar/>
       <Routes>
+        <Route element={<Question/>} path="/admin/question"/>
       <Route element={loggedin?<Test />:<Notfound />} path="/mcq" />     
       <Route element={loggedin?<UserProfile />:<Notfound />} path="/profile" />  
       <Route element={loggedin?<Leaderboard />:<Notfound />} path="/leaderboard" />
@@ -46,3 +49,4 @@ function App() {
 }
 
 export default App
+
