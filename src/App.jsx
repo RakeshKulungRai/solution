@@ -11,7 +11,9 @@ import Refreshtoken from "./components/loginpage/Refreshtoken"
 import Notfound from "./components/Notfound"
 import Test from "./components/test/Test"
 export const loginContext = createContext()
-import Question from "./components/admin/Question"
+import Create from "./components/admin/Create"
+import Showall from "./components/admin/Showall"
+import AddQuestion from "./components/admin/AddQuestion"
 function App() {
  
         const [loggedin,setLoggedin] = useState();
@@ -33,7 +35,9 @@ function App() {
       <BrowserRouter> 
       <Navbar/>
       <Routes>
-        <Route element={<Question/>} path="/admin/question"/>
+        <Route element={<Create/>} path="/admin/question"/>
+        <Route element={<Showall/>} path="/admin/questionall"/>
+      <Route element={<AddQuestion/>} path="/admin"/>
       <Route element={loggedin?<Test />:<Notfound />} path="/mcq" />     
       <Route element={loggedin?<UserProfile />:<Notfound />} path="/profile" />  
       <Route element={loggedin?<Leaderboard />:<Notfound />} path="/leaderboard" />

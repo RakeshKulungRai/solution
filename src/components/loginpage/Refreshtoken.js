@@ -1,6 +1,5 @@
 import axios from 'axios'
 export default async function Refreshtoken (){
-    console.log("hll")
     try
     {
 
