@@ -2,9 +2,9 @@ import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { loginContext } from '../../App'
 function UserProfile() {
-    const [loggedin,setLoggedin] = useContext(loginContext);
     const url = "http://localhost:8000/auth/me"
     const [userdetail,setUserdetail] = useState()
+    const [loggedin,setLoggedin] = useContext(loginContext)
     useEffect(()=>{
         Profile()
     },[])
@@ -22,9 +22,11 @@ function UserProfile() {
                     }
                 )
                 setUserdetail(result?.data)
+                setLoggedin(true)
         }
         catch(error){
             console.log(error.message)
+
         }
         
     }

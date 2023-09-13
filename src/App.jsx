@@ -14,23 +14,51 @@ export const loginContext = createContext()
 import Create from "./components/admin/Create"
 import Showall from "./components/admin/Showall"
 import AddQuestion from "./components/admin/AddQuestion"
+export const adminloginContext = createContext()
 function App() {
- 
-        const [loggedin,setLoggedin] = useState();
-  useEffect(()=>{
-  if(localStorage.getItem('user_auth_access_token'))
-  {
-    setLoggedin(true)
-  
-    setInterval(Refreshtoken,180000)
+
+        const [isadmin,setIsadmin] = useState(false);
+        const [loggedin,setLoggedin] = useState(false);
+  useEffect(()=>
+  {  Login()
+    async function Login()
+    {
+      try{
+      const result  =  await axios
+                (
+                    {
+                        url:url,
+                        method:'GET',
+                        headers:{
+                            Authorization:`Bearer ${localStorage.getItem('user_auth_access_token')}`
+                        }
+                    }
+                )
+                setLoggedin(true)
+                console.log("hi")
+          }
+        catch
+        {
+          if(Refreshtoken()){
+            setLoggedin(true)
+          }
+
+        }
+    }
     
-  }
   },[])
+
+   setInterval(() => {
+    
+      Refreshtoken();
+
+  }, 180000); 
+
   
  
 
   return (
-    <div>
+    <div className="bg-base-200 h-screen">
       <loginContext.Provider value={[loggedin,setLoggedin]}>
       <BrowserRouter> 
       <Navbar/>

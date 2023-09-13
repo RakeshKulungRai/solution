@@ -89,8 +89,19 @@ export default function Create() {
         }
 
     }
+    function cancel()
+    {
+        setSaveQuestion(false);
+        setQuestion('');
+        setScore();
+        setOptions([]);
+        setshowOption(false);
+        setAnswer(true);
+        setResult();
+    }
 
     return <div className='text-lg m-16'>
+        {saveQuestion&&<button className="btn btn-outline btn-error m-4" onClick={cancel}>Cancel </button>}
         <div className='flex'>
             {showOption && <Option onAdd={onAddOption} setshowOption={setshowOption} />}
             {saveQuestion && !showOption && <button onClick={() => { setshowOption(!showOption) }} className='rounded p-2  bg-add  ml-4 my-2'>add option</button>}

@@ -26,22 +26,21 @@ function Login() {
       }
     }
   return ( 
-    <div className='grid w-[400px] py-2 h-[300px] bg-slate-300 gap-y-auto flex items-center justify-center ml-[300px] rounded-md'>
-      <div className='text-center'><strong>Solution</strong></div>
-     <div className='block text-center' > <input type='text' className='text-center h-[30px] rounded focus:outline-slate-200' placeholder='Email' onChange={(e)=>{setEmail(e.target.value)}}/></div> 
-     <div className='block text-center'><input type='password' className='text-center h-[30px] rounded focus:outline-slate-200' placeholder='Password' onChange={(e)=>{setPassword(e.target.value)}}/></div> 
-     <button className='text-white' onClick={Signin}>
-     <div className='block  text-center bg-[blue] w-[400] rounded hover:bg-sky-700'>
-      Sign In</div> </button>
+    <div className='grid w-[400px] h-auto shadow gap-y-auto flex items-center justify-center ml-[300px] rounded-md flex-col gap-4 pb-5'>
+      <div className='text-center text-xl'><strong>Solution</strong></div>
+     <div className='block text-center' > <input type='text' className='input input-bordered w-full max-w-xs' placeholder='Email' onChange={(e)=>{setEmail(e.target.value)}}/></div> 
+     <div className='block '><input type='password' className='input input-bordered w-full max-w-xs' placeholder='Password' onChange={(e)=>{setPassword(e.target.value)}}/></div> 
+     <button className='btn btn-primary' onClick={Signin}>
+      Sign In </button>
       <span className='text-red-300 relative z-1'>{error}</span>
-      <div className='block '>
+      <div className='block text-center w-full'>
     
         Don't have account?
         <button className='ml-1 text-slate-500 hover:underline decoration-zinc-400' onClick={()=>navigate('/register')}> Create</button>
       </div>
-      <div className='text-center'>OR</div>
+      {/* <div className='text-center'>OR</div>
       <button className='hover:underline decoration-zinc-400'><div className='flex'><FcGoogle className='mt-1 text-center mr-2'/>Sign in with google?</div></button>
-      <button className='hover:underline decoration-zinc-400'><div className='flex'><BsFacebook className='mt-1 text-center mr-2'/> Sign in with facebook?</div></button> 
+      <button className='hover:underline decoration-zinc-400'><div className='flex'><BsFacebook className='mt-1 text-center mr-2'/> Sign in with facebook?</div></button>  */}
     </div>
   )
 }

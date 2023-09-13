@@ -1,11 +1,16 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-
+import Edit from './Edit';
+import EditQuestion from './EditQuestion';
 export default function Showall() {
     const [result, setResult] = useState();
-    const [x,setX] = useState(false)
-    const [edit,setEdit] = useState(false)
-    const [data,setData] = useState()
+    const [x, setX] = useState(false)
+    const [view, setView] = useState(false)
+    const [data, setData] = useState()
+    const [isEditQuestion,setIsEditQuestion]= useState(false)
+    const [question,setQuestion] = useState()
+    const [score,setScore] = useState();
+    const [questionId,setQuestionId] = useState();
     useEffect(() => {
         getAll();
         async function getAll() {
@@ -20,82 +25,90 @@ export default function Showall() {
     }, [x])
     async function deleteQuestion(id) {
         const url1 = `http://localhost:8000/questions/${id}`
-            const result = await axios({
-                url:url1,
-                method: "delete"
-            })
+        const result = await axios({
+            url: url1,
+            method: "delete"
+        })
         setX(!x)
     }
     async function deleteOption(id) {
         const url2 = `http://localhost:8000/questions/option/${id}`
-            const result = await axios({
-                url:url2,
-                method: "delete"
-            })
-            setX(!x)
+        const result = await axios({
+            url: url2,
+            method: "delete"
+        })
+        setX(!x)
+    }
+    async function editAnswer(id,question_id,option_id)
+    {
+
+    }
+    async function editOption(id,question_id,text)
+    {
+        console.log(id,question_id,text)
+    }
+    async function editQuestion(question,score)
+    {
+        console.log(question,score,questionId)
+
+        setQuestion();
+        setScore();
+        setQuestionId();
+        setIsEditQuestion(false);
+    }
+    function handleEdit(id,question,score)
+    {
+      
+        setQuestion(question);
+        setScore(score);
+        setQuestionId(id);
+        setIsEditQuestion(true);
     }
     return (
         <div>
             <table className='table'>
                 <thead>
                     <tr>
-                    <th>Question</th>
-                    <th>Score</th>
-                    <th>Action Edit</th>
-                    <th>Action Delete</th>
+                        <th>Question</th>
+                        <th>Score</th>
+                        <th>Options & Answer</th>
+                        <th>Action Delete</th>
                     </tr>
                 </thead>
-               
+
                 <tbody >
-            {
-            result?.map((data, index) => (
-                
-                    <tr key={index}>
-                    <td> {data.question}</td> 
-                    <td>{data.score}</td>
-                    <td><button className='bg-edit rounded p-1 mx-2' onClick={()=>{setEdit(!edit);
-                    setData(data)}} >Edit </button>
-                   </td>
-                     <td><button className='bg-delete p-1 rounded ' onClick={()=>deleteQuestion(data.id)}>Delete</button></td>
-                    {/* <ul>
-                        {data?.options?.map((option, ind) => (
-                            <li key={ind} className="text-blue-500 bg-slate-100 rounded m-2 w-max flex">{option.option} 
-                            <button className='bg-edit rounded p-1 mx-2'>Edit</button> 
-                            <button className='bg-delete p-1 rounded ' onClick={()=>deleteOption(option.id)}>Delete</button>
-                        </li>
+                    {
+                        result?.map((data, index) => (
 
-                        )
-                        )}
-                        <li className='my-1'>Ans: {data?.options?.find((option) => option.id === data?.answer?.option_id)?.option}
-                         <button className='bg-edit rounded p-1 mx-2'>Edit</button>
-                         </li>
-                    </ul> */}
+                            <tr key={index}>
+                                <td> {data.question}</td>
+                                <td>{data.score}</td>
+                                <td><button className='btn btn-outline btn-info' onClick={() => {
+                                    setView(!view);
+                                    setData(data)
+                                }} >View </button>
+                                </td>
+                                <td>
+                                    <button className='btn btn-outline btn-accent mr-4' onClick={()=>handleEdit(data.id,data.question,data.score)}>Edit</button>
+                                    <button className='btn btn-outline btn-warning' onClick={() => deleteQuestion(data.id)}>Delete</button></td>
 
-                     </tr>
-                  
-            ))
 
-        }
-           </tbody>
-        </table>
-        {edit&&<div className='fixed top-0 right-32 modal'><Edit data={data} /></div>}
-       </div>
+                            </tr>
+
+                        ))
+
+                    }
+                </tbody>
+            </table>
+            {isEditQuestion&&<div className='fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
+                <EditQuestion question={question} score={score} editQuestion={editQuestion} isEditQuestion={setIsEditQuestion} />
+                </div>}
+            {view && (
+                <div className='fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 '>
+                    <Edit data={data} view={setView} delOption={deleteOption} submitEditAnswer={editAnswer} editOption={editOption}/>
+
+                </div>
+            )}
+        </div>
     )
 }
-function Edit({data})
-{
-    console.log(data)
-    const [question,setQuestion] = useState(data.question)
-    const [options,setOptions] = useState(data.options)
-    return <>
-     <input value={question} onChange={(e)=>setQuestion(e.target.value)} />
-     {
-        data?.options?.map((option,index)=>(
-            <div className="grid grid-cols-2 gap-4" key={index}>
-                <input value={option.option} onChange={()=>setOptions()}/> <button onClick={()=>onDelete(option.id)} ></button>
-            </div>
-        ))
-     }
-    </>
-}
-
