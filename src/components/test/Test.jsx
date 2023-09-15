@@ -4,8 +4,9 @@ function Test() {
     const [mcq,setMcq] = useState(false)
   return (
     <div>
-        {mcq?<Mcq/>:''}
-        <button onClick={()=>{setMcq(true)}} className={`${mcq?"hidden":"m-32 bg-green-500 text-white p-2 rounded" }`} >Start</button>
+      <Mcq/>
+        {/* {mcq?<Mcq/>:''}
+        <button onClick={()=>{setMcq(true)}} className={`${mcq?"hidden":"m-32 bg-green-500 text-white p-2 rounded" }`} >Start</button> */}
     </div>
   )
 }

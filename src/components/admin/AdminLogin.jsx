@@ -1,12 +1,9 @@
 import React, { useContext, useState } from 'react'
-import {FcGoogle}  from 'react-icons/fc';
-import {BsFacebook} from 'react-icons/bs'
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { loginContext } from '../../App';
-function Login() {
-
-  const [loggedin,setLoggedin] = useContext(loginContext);
+function AdminLogin() {
+  const [isadmin,setIsadmin] = useContext(loginContext);
   const navigate = useNavigate()
     const [email,setEmail] = useState();
     const [password,setPassword] = useState();
@@ -17,12 +14,12 @@ function Login() {
         const result  = await axios.post('http://localhost:8000/auth/login',{"email":email,"password":password})
         localStorage.setItem('user_auth_access_token',result.data.access_token)
         localStorage.setItem('user_auth_refresh_token',result.data.refresh_token)
-        setLoggedin(true)
+        setIsadmin(true)
         return navigate('/')
       }
       catch(error)
       {
-        setLoggedin(false)
+        setIsadmin(false)
           setError(error.message)
       }
     }
@@ -38,7 +35,7 @@ function Login() {
       <div className='block text-center w-full font-sans'>
     
         Don't have account?
-        <button className='btn btn-active btn-link' onClick={()=>navigate('/register')}> Create</button>
+        <button className='ml-1 text-slate-500 hover:underline decoration-zinc-400 font-serif font-light' onClick={()=>navigate('/register')}> Create</button>
       </div>
       {/* <div className='text-center'>OR</div>
       <button className='hover:underline decoration-zinc-400'><div className='flex'><FcGoogle className='mt-1 text-center mr-2'/>Sign in with google?</div></button>
@@ -48,4 +45,4 @@ function Login() {
   )
 }
 
-export default Login
+export default AdminLogin

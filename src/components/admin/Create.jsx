@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { RxCross2 } from 'react-icons/rx';
 
-export default function Create() {
+export default function Create({isAddNew}) {
     const [question, setQuestion] = useState('');
     const [score, setScore] = useState(1);
     const [showOption, setshowOption] = useState(false);
@@ -13,7 +14,6 @@ export default function Create() {
     async function SubmitQuestion() {
         try {
             const url = "http://localhost:8000/questions"
-            console.log(question)
             const result = await axios(
                 {
                     url,
@@ -89,20 +89,11 @@ export default function Create() {
         }
 
     }
-    function cancel()
-    {
-        setSaveQuestion(false);
-        setQuestion('');
-        setScore();
-        setOptions([]);
-        setshowOption(false);
-        setAnswer(true);
-        setResult();
-    }
+   
 
-    return <div className='text-lg m-16'>
-        {saveQuestion&&<button className="btn btn-outline btn-error m-4" onClick={cancel}>Cancel </button>}
-        <div className='flex'>
+    return <div className='card  bg-base-100 shadow-xl p-16 pb-16 '>
+            <button onClick={() => isAddNew(false)} className='bg-white top-2 right-2 absolute'> <RxCross2 className='h-6 w-6' /></button>
+        <div className=''>
             {showOption && <Option onAdd={onAddOption} setshowOption={setshowOption} />}
             {saveQuestion && !showOption && <button onClick={() => { setshowOption(!showOption) }} className='rounded p-2  bg-add  ml-4 my-2'>add option</button>}
         </div>
@@ -151,7 +142,8 @@ export default function Create() {
                 }
                 </tbody>
                 </table>
-                </div> : <div className='flex my-2'>
+                </div> : <div className='grid w-[400px] shadow gap-y-auto flex items-center justify-center rounded-md flex-col gap-4 py-8'>
+                    <span className='block text-center'>First Add Question</span>
                 <textarea name="" onChange={(e) => { setQuestion(e.target.value) }} placeholder='Write question' value={question} className='textarea textarea-success  block w-full max-w-xs mb-4'>
                 </textarea>
                 <input type="number" placeholder='score' onChange={(e) => setScore(e.target.value)} step={0.5} value={score} className=" input input-bordered input-success w-full max-w-xs  h-16 m-1 w-20 mx-2" />
@@ -170,7 +162,7 @@ function Option({ onAdd, setshowOption }) {
         onAdd(option);
         setOption('');
     }
-    return <div className='flex'>
+    return <div className='flex flex-cols gap-8'>
         <textarea onChange={(e) => {setOption(e.target.value) }} className='textarea textarea-success   w-full max-w-xs mb-4' placeholder='Add option'></textarea>
         <button onClick={()=>saveOption()} className='btn btn-info m-1 h-16 mx-2' >Save</button>
         <button onClick={() => { setshowOption(false) }} className='btn btn-warning h-16 m-1'>cancel</button>

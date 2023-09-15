@@ -1,64 +1,80 @@
-import React, { useState } from 'react';
-import { mcq } from '../question/question';
+import React, { useState, useEffect } from 'react';
+
 import Time from './Time';
 import axios from 'axios';
+
 export default function Mcq() {
-    const [currentpage,SetCurrentpage] = useState(1)
+    const [question, setQuestion] = useState();
+    useEffect(() => {
+        getAll();
+        async function getAll() {
+            const url = "http://localhost:8000/questions"
+            const result = await axios({
+                url,
+                method: "get"
+            })
+            setQuestion(result.data)
+        }
+
+    }, [])
+    const [currentpage, SetCurrentpage] = useState(1)
     const page = 4
-    const noofpage = mcq[0].questions.length
-    const totalpage = Math.ceil(noofpage/page)
-    const question = mcq[0].questions
-    const currentindex=   (currentpage-1)*page
-    const data= question.slice(currentindex,Math.min(currentindex+page,noofpage))
-    async function QuestionAll()
-    {
-        const url ="http://localhost:8000/questions"
-        try{
-            const result = await axios (
-                {
-                    url,
-                    method:'get',
-                }
-               
-            )
-            console.warn(result)
-        }
-        catch(error)
-        {
-             console.log(error.message)
-        }
-      }
-    function Submit()
-    {
-        
+    const noofpage = question?.length
+    const totalpage = Math.ceil(noofpage / page)
+    const currentindex = (currentpage - 1) * page
+    const result = question?.slice(currentindex, Math.min(currentindex + page, noofpage))
+
+    function Submit() {
+
     }
     return (
-        <div>
-            <div className='p-14'>
-                <Time />
-                {data.map((d, index) => (
-                    <ul key={index}>
-                        <li>{currentindex+index+1}. {d?.question} hi</li>
-                        {d.options.map((option,i)=>(
-                        <li key ={i} className='flex green m-2'>
-                            <input type='radio' className='radio label-text' name={index+1+currentindex }/>{option}</li>
-                        ))}
-                       <br/>
-                    </ul>
-                ))}
-            </div>
-            <div>
-                <button className={`mr-8 ${currentpage==1?'text-slate-500':''}`} disabled={currentpage==1?true:false} onClick={()=>{SetCurrentpage( currentpage -1)}}>prev</button>
-                <button className={` ${currentpage==totalpage?'text-slate-500':''}`} disabled={currentpage==totalpage?true:false} onClick={()=>{SetCurrentpage( currentpage + 1)}}>next</button>
+        <div className="p-auto text-xl mx-12 shadow">
 
+            <div className='text-md flex-1 justify-center items-center'>
+                <div className='top-16 sticky w-full  px-16  h-16 shadow p-2 bg-base-300'>
+                    <div className='flex-1 justify-center'>
+                    <div className="float-left pt-2"> <Time /></div>
+                    <div className="float-right ml-8">
+                        <button className={`join-item btn  ${currentpage == 1 ? 'text-slate-500' : ''}`} disabled={currentpage == 1 ? true : false} onClick={() => { SetCurrentpage(currentpage - 1) }}>Prev</button>
+                        <button className={`join-item btn  ${currentpage == totalpage ? 'text-slate-500' : ''}`} disabled={currentpage == totalpage ? true : false} onClick={() => { SetCurrentpage(currentpage + 1) }}>Next</button>
+                    </div>
+                    <button onClick={Submit} className='float-right btn btn-outline btn-success  '>submit</button>
+                    </div>
+                </div>
+                <div className='overflow-y-hidden ml-64 flex-1 ' >
+                    {
+                        result?.map((question, index) => (
+                            <div className='my-8' key={index}>
+                                <Question id={question.id} question={question.question} options={question.options} />
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
-           <button onClick={QuestionAll}>submit</button>
+            {/* <div className='absolute bottom-2 right-2'>
+                <button className={` ${currentpage == 1 ? 'text-slate-500' : ''}`} disabled={currentpage == 1 ? true : false} onClick={() => { SetCurrentpage(currentpage - 1) }}>prev</button>
+                <button className={` ${currentpage == totalpage ? 'text-slate-500' : ''}`} disabled={currentpage == totalpage ? true : false} onClick={() => { SetCurrentpage(currentpage + 1) }}>next</button>
+
+            </div> */}
+
         </div>
     );
 }
-function Question({})
-{
-    return(
-        <></>
+function Question({ question, id, options }) {
+    return (
+        <>
+            <div className='my-4'>{id}. {question}</div>
+            <ul key={id}>
+
+                {options?.map((option, index) => (
+                    <div className='ml-8' key={index}>
+                        <input type="radio" name={id} key={index} className="radio radio-accent h-5 w-5" /> <span className=' '>{option.option}</span>
+                    </div>
+                ))
+
+                }
+
+            </ul>
+        </>
     )
 }
