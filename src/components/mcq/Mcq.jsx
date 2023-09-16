@@ -28,7 +28,7 @@ export default function Mcq() {
 
     }
     return (
-        <div className="p-auto text-xl mx-12 shadow">
+        <div className="p-auto text-xl px-12 shadow">
 
             <div className='text-md flex-1 justify-center items-center'>
                 <div className='top-16 sticky w-full  px-16  h-16 shadow p-2 bg-base-300'>
@@ -41,7 +41,7 @@ export default function Mcq() {
                     <button onClick={Submit} className='float-right btn btn-outline btn-success  '>submit</button>
                     </div>
                 </div>
-                <div className='overflow-y-hidden ml-64 flex-1 ' >
+                <div className='overflow-y-hidden ml-64 flex-1 bg-base-100 p-16' >
                     {
                         result?.map((question, index) => (
                             <div className='my-8' key={index}>
