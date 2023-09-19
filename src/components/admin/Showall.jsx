@@ -13,7 +13,7 @@ export default function Showall() {
     const [question, setQuestion] = useState()
     const [score, setScore] = useState();
     const [questionId, setQuestionId] = useState();
-
+    const baseurl = "http://localhost:8000"
     useEffect(() => {
         getAll();
         async function getAll() {
@@ -53,6 +53,7 @@ export default function Showall() {
         setX(!x)
     }
     async function editAnswer(id, question_id, option_id) {
+        
 
     }
     async function editOption(id, question_id, text) {
@@ -72,6 +73,10 @@ export default function Showall() {
         setScore(score);
         setQuestionId(id);
         setIsEditQuestion(true);
+    }
+    async function addOption(id,text)
+    {
+        console.log(id,text)
     }
     
     arr1 = Array.from({ length: Math.min(2,totalpage-1-currentpage)}, (_,index) =>currentpage+ index +1)
@@ -127,7 +132,7 @@ export default function Showall() {
                             <th>Question</th>
                             <th>Score</th>
                             <th>Options & Answer</th>
-                            <th>Action Delete</th>
+                            <th>Action </th>
                         </tr>
                     </thead>
 
@@ -160,7 +165,7 @@ export default function Showall() {
                 </div>}
                 {view && (
                     <div className='fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 '>
-                        <Edit data={data} view={setView} delOption={deleteOption} submitEditAnswer={editAnswer} editOption={editOption} />
+                        <Edit data={data} view={setView} delOption={deleteOption} submitEditAnswer={editAnswer} editOption={editOption} addOption={addOption} />
 
                     </div>
                 )}
@@ -172,12 +177,7 @@ export default function Showall() {
                 )}
 
             </div>
-           
-            {/* <div className=''>
-                <button className={` ${currentpage == 1 ? 'text-slate-500' : ''}`} disabled={currentpage == 1 ? true : false} onClick={() => { SetCurrentpage(currentpage - 1) }}>prev</button>
-                <button className={` ${currentpage == totalpage ? 'text-slate-500' : ''}`} disabled={currentpage == totalpage ? true : false} onClick={() => { SetCurrentpage(currentpage + 1) }}>next</button>
-
-            </div> */}
+         
         </div>
     )
 }

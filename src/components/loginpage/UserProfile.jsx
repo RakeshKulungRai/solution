@@ -5,53 +5,50 @@ import Refreshtoken from './Refreshtoken'
 import { useNavigate } from 'react-router-dom'
 function UserProfile() {
     const url = "http://localhost:8000/auth/me"
-    const [userdetail,setUserdetail] = useState()
-    const [loggedin,setLoggedin] = useContext(loginContext)
+    const [userdetail, setUserdetail] = useState()
+    const [loggedin, setLoggedin] = useContext(loginContext)
     const navigate = useNavigate()
-    useEffect(()=>{
+    useEffect(() => {
         Profile()
-    },[])
-    async function Profile (){
-        try{
-           
-                const result  =  await axios
+    }, [])
+    async function Profile() {
+        try {
+
+            const result = await axios
                 (
                     {
-                        url:url,
-                        method:'GET',
-                        headers:{
-                            Authorization:`Bearer ${localStorage.getItem('user_auth_access_token')}`
+                        url: url,
+                        method: 'GET',
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('user_auth_access_token')}`
                         }
                     }
                 )
-                setUserdetail(result?.data)
-                setLoggedin(true)
+            setUserdetail(result?.data)
+            setLoggedin(true)
         }
-        catch(error){
+        catch (error) {
             console.log(error.message)
-            if (loggedin)
-            {
+            if (loggedin) {
                 Refreshtoken()
                 return navigate('/profile')
             }
-            else
-            {
+            else {
                 return navigate('/login')
             }
-            
-            
+
+
         }
-        
+
     }
-    
-  return (
-    <div>
-    <div className='block'>UserProfile</div>
-        <div>Name : {userdetail?.name}</div>
-        <div>Email : {userdetail?.email}</div>
-        <div>Join on : {userdetail?.created_at}</div>
-    </div>
-  )
+
+    return (
+        <div className='h-screen w-full items-center justify-center flex'>
+        <div className=''>
+                hi
+        </div>
+        </div>
+    )
 }
 
 export default UserProfile

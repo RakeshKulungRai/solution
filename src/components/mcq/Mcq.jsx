@@ -31,24 +31,26 @@ export default function Mcq() {
         <div className="p-auto text-xl px-12 shadow">
 
             <div className='text-md flex-1 justify-center items-center'>
-                <div className='top-16 sticky w-full  px-16  h-16 shadow p-2 bg-base-300'>
+                <div className='top-16 sticky w-full  px-16  h-auto min-h-16 shadow p-2 bg-base-300'>
                     <div className='flex-1 justify-center'>
-                    <div className="float-left pt-2"> <Time /></div>
-                    <div className="float-right ml-8">
+                    <div className="md:float-left md:pt-2 block"> <Time /></div>
+                    <div className=" block md:m-auto m-4  md:float-right md:ml-8">
                         <button className={`join-item btn  ${currentpage == 1 ? 'text-slate-500' : ''}`} disabled={currentpage == 1 ? true : false} onClick={() => { SetCurrentpage(currentpage - 1) }}>Prev</button>
                         <button className={`join-item btn  ${currentpage == totalpage ? 'text-slate-500' : ''}`} disabled={currentpage == totalpage ? true : false} onClick={() => { SetCurrentpage(currentpage + 1) }}>Next</button>
                     </div>
-                    <button onClick={Submit} className='float-right btn btn-outline btn-success  '>submit</button>
+                    <button onClick={Submit} className='block md:float-right btn btn-outline btn-success  '>submit</button>
                     </div>
                 </div>
-                <div className='overflow-y-hidden ml-64 flex-1 bg-base-100 p-16' >
+                <div className='flex-1 justify-center'>
+                <div className='overflow-y-hidden flex-1 justify-center   bg-base-100 p-16' >
                     {
                         result?.map((question, index) => (
-                            <div className='my-8' key={index}>
+                            <div className='' key={index}>
                                 <Question id={question.id} question={question.question} options={question.options} />
                             </div>
                         ))
                     }
+                </div>
                 </div>
             </div>
             {/* <div className='absolute bottom-2 right-2'>

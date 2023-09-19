@@ -29,7 +29,7 @@ function Register() {
        
     }    
   return ( 
-    <div className='flex-1 h-full w-full items-center justify-center flex '>
+    <div className='flex-1 h-screen w-full items-center justify-center flex '>
     <div className='grid w-[400px] shadow gap-y-auto flex items-center justify-center rounded-md flex-col gap-4 py-8'>
       <div className='text-center text-xl'><strong>Solution</strong></div>
       <div className='block text-center' > <input type='text' className='input input-bordered w-full max-w-xs' placeholder='Name' onChange={(e)=>{setName(e.target.value)}}/></div>

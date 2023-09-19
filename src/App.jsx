@@ -65,7 +65,7 @@ function App() {
       <Routes>
         <Route element={<Showall/>} path="/admin/questionall"/>
       <Route element={<AdminLogin/>} path="/admin"/>
-      <Route element={loggedin?<Test />:<Notfound />} path="/mcq" />     
+      <Route element={loggedin?<Test />:<Test />} path="/mcq" />     
       <Route element={loggedin?<UserProfile />:<Notfound />} path="/profile" />  
       <Route element={loggedin?<Leaderboard />:<Notfound />} path="/leaderboard" />
       <Route element={<Notfound />} path="*"/>
